@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+Sitemap: https://conciergerieparisouest.fr/sitemap-index.xml
+Sitemap: https://conciergerieparisouest.fr/sitemap.xml
+Sitemap: https://conciergerieparisouest.fr/sitemap-communes.xml
+Sitemap: https://conciergerieparisouest.fr/sitemap-blog.xml
+
+# Crawl delay for courtesy
+Crawl-delay: 1

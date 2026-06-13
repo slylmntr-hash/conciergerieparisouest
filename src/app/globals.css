@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design System CSS Variables ─────────────────────────────── */
+:root {
+  --color-cream: #faf9f6;
+  --color-cream-2: #f4f1ea;
+  --color-cream-3: #ede9e0;
+  --color-charcoal: #1a1a1a;
+  --color-dark: #2d2d2d;
+  --color-mid: #5a5a5a;
+  --color-muted: #888888;
+  --color-gold: #b8935a;
+  --color-gold-light: #d4af7a;
+  --color-gold-pale: #f0e6d3;
+  --color-border: #e5e0d5;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --spacing-section: clamp(3rem, 6vw, 6rem);
+  --max-prose: 72ch;
+  --max-layout: 1280px;
+}
+
+/* ── Base Reset ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* ── Typography ───────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-charcoal);
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem);
+}
+
+p {
+  color: var(--color-mid);
+  max-width: var(--max-prose);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Gold Accent Line ─────────────────────────────────────────── */
+.gold-line::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+/* ── Gold Corners on Images (DS.3) ───────────────────────────── */
+.gold-corners {
+  position: relative;
+}
+.gold-corners::before,
+.gold-corners::after {
+  content: '';
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-color: var(--color-gold);
+  border-style: solid;
+  z-index: 10;
+  pointer-events: none;
+}
+.gold-corners::before {
+  top: -0.5rem;
+  left: -0.5rem;
+  border-width: 1px 0 0 1px;
+}
+.gold-corners::after {
+  bottom: -0.5rem;
+  right: -0.5rem;
+  border-width: 0 1px 1px 0;
+}
+
+/* ── 1px Border Grid (DS.4) ──────────────────────────────────── */
+.border-grid {
+  border: 1px solid var(--color-border);
+  gap: 1px;
+  background-color: var(--color-border);
+}
+.border-grid > * {
+  background-color: var(--color-cream);
+}
+
+/* ── Form Inputs (no border-radius) ──────────────────────────── */
+input,
+textarea,
+select {
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  border: 1px solid var(--color-border);
+  background: white;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  color: var(--color-charcoal);
+  transition: border-color 0.15s ease;
+  outline: none;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-gold);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-muted);
+}
+
+/* ── CTA Button ───────────────────────────────────────────────── */
+.btn-gold {
+  display: inline-block;
+  background-color: var(--color-gold);
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.875rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 0;
+  white-space: nowrap;
+}
+.btn-gold:hover {
+  background-color: var(--color-gold-light);
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.875rem 2rem;
+  border: 1px solid var(--color-charcoal);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0;
+}
+.btn-outline:hover {
+  background-color: var(--color-charcoal);
+  color: white;
+}
+
+/* ── Section Spacing ─────────────────────────────────────────── */
+.section {
+  padding-block: var(--spacing-section);
+}
+
+.container {
+  max-width: var(--max-layout);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+/* ── Lead Form ────────────────────────────────────────────────── */
+.lead-form {
+  background: white;
+  border: 1px solid var(--color-border);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.lead-form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .lead-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lead-form .form-full {
+  grid-column: 1 / -1;
+}
+
+/* ── Navigation ───────────────────────────────────────────────── */
+.nav-link {
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-dark);
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.nav-link:hover {
+  border-bottom-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* ── Commune Card ─────────────────────────────────────────────── */
+.commune-card {
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 1rem;
+  background: white;
+  transition: border-color 0.2s ease;
+  display: block;
+}
+.commune-card:hover {
+  border-color: var(--color-gold);
+}
+
+/* ── Stat Block ───────────────────────────────────────────────── */
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(26, 26, 26, 0.72) 0%,
+    rgba(26, 26, 26, 0.42) 50%,
+    rgba(26, 26, 26, 0.15) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Breadcrumb ───────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+.breadcrumb a {
+  color: var(--color-muted);
+  transition: color 0.15s ease;
+}
+.breadcrumb a:hover {
+  color: var(--color-gold);
+}
+.breadcrumb-sep {
+  color: var(--color-border);
+}
+
+/* ── Revenue Estimator ────────────────────────────────────────── */
+.estimator-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.revenue-range {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  color: var(--color-gold);
+  font-weight: 300;
+}
+
+/* ── Trust Badges ─────────────────────────────────────────────── */
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  border: 1px solid var(--color-border);
+}
+
+/* ── FAQ ──────────────────────────────────────────────────────── */
+details {
+  border-bottom: 1px solid var(--color-border);
+}
+details summary {
+  cursor: pointer;
+  padding: 1.25rem 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: var(--color-dark);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  color: var(--color-gold);
+  transition: transform 0.2s ease;
+}
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+details .faq-body {
+  padding-bottom: 1.25rem;
+  color: var(--color-mid);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+/* ── Blog Article ─────────────────────────────────────────────── */
+.article-body {
+  max-width: var(--max-prose);
+}
+.article-body h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.article-body h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+.article-body p {
+  margin-bottom: 1.25rem;
+}
+.article-body ul,
+.article-body ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  color: var(--color-mid);
+}
+.article-body li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+footer {
+  background-color: var(--color-charcoal);
+  color: rgba(255, 255, 255, 0.7);
+}
+footer a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.15s ease;
+}
+footer a:hover {
+  color: var(--color-gold-light);
+}
+
+/* ── Animations ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fadeIn 0.6s ease forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ── Print ────────────────────────────────────────────────────── */
+@media print {
+  .hero, nav, footer, .lead-form { display: none !important; }
+  body { background: white; color: black; }
+}

@@ -35,10 +35,6 @@ export default function ContactPage() {
                   conciergerieparisouest@gmail.com
                 </a>
               </div>
-              <div className="flex gap-3">
-                <span className="text-gold">—</span>
-                <a href="tel:+33100000000" className="hover:text-gold transition-colors">01 00 00 00 00</a>
-              </div>
             </div>
           </div>
           <LeadForm source="contact-page" />

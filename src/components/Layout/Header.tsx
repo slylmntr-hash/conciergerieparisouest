@@ -44,15 +44,6 @@ export function Header() {
             ))}
           </nav>
 
-          <a
-            href="tel:+33100000000"
-            className="hidden lg:flex items-center gap-2 text-sm font-medium text-charcoal hover:text-gold transition-colors"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.06 3a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.84a16 16 0 006.25 6.25l1.1-1.1a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-            </svg>
-            01 00 00 00 00
-          </a>
 
           {/* Mobile burger */}
           <button
@@ -93,13 +84,6 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="tel:+33100000000"
-              className="mt-3 text-sm font-medium text-gold"
-              onClick={() => setOpen(false)}
-            >
-              01 00 00 00 00
-            </a>
           </nav>
         </div>
       )}
